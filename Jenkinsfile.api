@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    stages {
+        stage('OpenWeatherMap API') {
+            steps {
+                script {
+                    def city = 'Raleigh'
+                    def apiKey = '98e3b73159dbc56f92e91711e4e2f02d'
+                    def response = sh(script: "curl 'https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}'", returnStdout: true).trim()
+                    println("OpenWeatherMap API response: ${response}")
+                }
+            }
+        }
+        stage('NASA API') {
+            steps {
+                script {
+                    def apiKey = 'GcayIrrhyMWaw0TfFPkDzVoKFs7HCA0LUvFTuTvc'
+                    def response = sh(script: "curl 'https://api.nasa.gov/planetary/apod?api_key=${apiKey}'", returnStdout: true).trim()
+                    println("NASA API response: ${response}")
+                }
+            }
+        }
+        stage('GitHub API') {
+            steps {
+                script {
+                    def owner = 'octocat'
+                    def repo = 'Hello-World'
+                    def response = sh(script: "curl 'https://api.github.com/repos/${owner}/${repo}'", returnStdout: true).trim()
+                    println("GitHub API response: ${response}")
+                }
+            }
+        }
+        stage('The Movie Database API') {
+            steps {
+                script {
+                    def apiKey = 'ee9307b353a6a1e02fe4a2cacb94274d'
+                    def response = sh(script: "curl 'https://api.themoviedb.org/3/movie/550?api_key=${apiKey}'", returnStdout: true).trim()
+                    println("The Movie Database API response: ${response}")
+                }
+            }
+        }
+    }
+}
