@@ -15,8 +15,7 @@ pipeline {
         stage('NASA API') {
             steps {
                 script {
-                    def apiKey = 'GcayIrrhyMWaw0TfFPkDzVoKFs7HCA0LUvFTuTvc'
-                    def response = sh(script: "curl 'https://api.nasa.gov/planetary/apod?api_key=${apiKey}'", returnStdout: true).trim()
+                    def response = sh(script: "curl 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY&page=1'", returnStdout: true).trim()
                     println("NASA API response: ${response}")
                 }
             }
