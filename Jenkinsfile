@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label 'linux' // linux
+        }
+    }
     stages {
         stage('Get posts') {
             steps {
