@@ -4,9 +4,10 @@ pipeline {
         stage('OpenWeatherMap API') {
             steps {
                 script {
-                    def city = 'Raleigh'
+                    def lat = '35.810880'
+                    def lon = '-78.597340'
                     def apiKey = '98e3b73159dbc56f92e91711e4e2f02d'
-                    def response = sh(script: "curl 'https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}'", returnStdout: true).trim()
+                    def response = sh(script: "curl 'https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}'", returnStdout: true).trim()
                     println("OpenWeatherMap API response: ${response}")
                 }
             }
