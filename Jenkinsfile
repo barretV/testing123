@@ -8,7 +8,7 @@ pipeline {
         stage('Get posts') {
             steps {
                 script {
-                    def response = sh(script: 'curl https://jsonplaceholder.typicode.com/posts', returnStdout: true).trim()
+                    def response = sh(script: 'curl -v https://jsonplaceholder.typicode.com/posts', returnStdout: true).trim()
                     println(response)
                 }
             }
@@ -16,7 +16,7 @@ pipeline {
         stage('Get comments') {
             steps {
                 script {
-                    def response = sh(script: 'curl https://jsonplaceholder.typicode.com/posts/1/comments', returnStdout: true).trim()
+                    def response = sh(script: 'curl -v https://jsonplaceholder.typicode.com/posts/1/comments', returnStdout: true).trim()
                     println(response)
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
         stage('Get albums') {
             steps {
                 script {
-                    def response = sh(script: 'curl https://jsonplaceholder.typicode.com/albums', returnStdout: true).trim()
+                    def response = sh(script: 'curl -v https://jsonplaceholder.typicode.com/albums', returnStdout: true).trim()
                     println(response)
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
         stage('Get todos') {
             steps {
                 script {
-                    def response = sh(script: 'curl https://jsonplaceholder.typicode.com/todos', returnStdout: true).trim()
+                    def response = sh(script: 'curl -v https://jsonplaceholder.typicode.com/todos', returnStdout: true).trim()
                     println(response)
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
         stage('Create post') {
             steps {
                 script {
-                    def response = sh(script: 'curl -X POST -H "Content-Type: application/json" -d \'{"title": "New post", "body": "This is a new post", "userId": 1}\' https://jsonplaceholder.typicode.com/posts', returnStdout: true).trim()
+                    def response = sh(script: 'curl -v -X POST -H "Content-Type: application/json" -d \'{"title": "New post", "body": "This is a new post", "userId": 1}\' https://jsonplaceholder.typicode.com/posts', returnStdout: true).trim()
                     println(response)
                 }
             }
@@ -48,7 +48,7 @@ pipeline {
         stage('Update post') {
             steps {
                 script {
-                    def response = sh(script: 'curl -X PUT -H "Content-Type: application/json" -d \'{"title": "Updated post", "body": "This post has been updated", "userId": 1}\' https://jsonplaceholder.typicode.com/posts/1', returnStdout: true).trim()
+                    def response = sh(script: 'curl -v -X PUT -H "Content-Type: application/json" -d \'{"title": "Updated post", "body": "This post has been updated", "userId": 1}\' https://jsonplaceholder.typicode.com/posts/1', returnStdout: true).trim()
                     println(response)
                 }
             }
@@ -56,7 +56,7 @@ pipeline {
         stage('Delete post') {
             steps {
                 script {
-                    def response = sh(script: 'curl -X DELETE https://jsonplaceholder.typicode.com/posts/1', returnStdout: true).trim()
+                    def response = sh(script: 'curl -v -X DELETE https://jsonplaceholder.typicode.com/posts/1', returnStdout: true).trim()
                     println(response)
                 }
             }
